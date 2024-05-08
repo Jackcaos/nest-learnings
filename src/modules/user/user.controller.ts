@@ -9,6 +9,5 @@ export class UserController {
   @Get()
   async getHello(): Promise<User[]> {
     return await this.userService.findAll();
-    // return this.userService.getUser();
   }
 }

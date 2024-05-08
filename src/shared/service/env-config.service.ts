@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
-import { type TypeOrmModuleOptions } from '@nestjs/typeorm';
+import { type TypeOrmModuleOptions } from "@nestjs/typeorm";
 import { isNil } from "lodash";
 
 @Injectable()
@@ -9,7 +9,7 @@ export class EnvConfigService {
 
   get(key: string): string {
     const value = this.configService.get<string>(key);
-    
+
     if (isNil(value)) {
       throw new Error(key + " does not exist in config service");
     }
@@ -21,7 +21,7 @@ export class EnvConfigService {
     const value = this.get(key);
 
     if (isNaN(Number(value))) {
-      throw new Error(key + ' is not a number');
+      throw new Error(key + " is not a number");
     }
 
     return Number(value);
@@ -29,7 +29,7 @@ export class EnvConfigService {
 
   private getString(key: string): string {
     const value = this.get(key);
-    
+
     return value.trim();
   }
 
@@ -39,7 +39,7 @@ export class EnvConfigService {
     try {
       return Boolean(JSON.parse(value));
     } catch {
-      throw new Error(key + ' parse to boolean error');
+      throw new Error(key + " parse to boolean error");
     }
   }
 
@@ -53,9 +53,7 @@ export class EnvConfigService {
       database: this.getString("DB_DATABASE"),
       synchronize: this.getBoolean("DB_SYNCHRONIZE"),
       logging: this.getBoolean("DB_LOGGING"),
-      entities: [
-        __dirname + '/../../modules/**/*.entity{.ts,.js}',
-      ]
-    }
+      entities: [__dirname + "/../../modules/**/*.entity{.ts,.js}"],
+    };
   }
 }
