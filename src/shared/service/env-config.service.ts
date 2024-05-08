@@ -56,4 +56,8 @@ export class EnvConfigService {
       entities: [__dirname + "/../../modules/**/*.entity{.ts,.js}"],
     };
   }
+
+  get nodeEnv(): string {
+    return this.getString("NODE_ENV");
+  }
 }
