@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, BeforeInsert } from "typeorm";
+import * as bcrypt from "bcryptjs";
 
 @Entity("sc_user")
 export class User {
@@ -48,4 +49,11 @@ export class User {
     },
   })
   updatedAt: Date;
+
+  @BeforeInsert()
+  async encryptPwd() {
+    // const salt = bcrypt.genSaltSync(10);
+    this.password = await bcrypt.hash(this.password, 10);
+    console.log("this.password", this.password);
+  }
 }

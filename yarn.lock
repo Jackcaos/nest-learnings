@@ -676,6 +676,11 @@
   resolved "http://registry.m.jd.com/@lukeed/csprng/download/@lukeed/csprng-1.1.0.tgz#1e3e4bd05c1cc7a0b2ddbd8a03f39f6e4b5e6cfe"
   integrity sha1-Hj5L0Fwcx6Cy3b2KA/OfbktebP4=
 
+"@microsoft/tsdoc@^0.14.2":
+  version "0.14.2"
+  resolved "http://registry.m.jd.com/@microsoft/tsdoc/download/@microsoft/tsdoc-0.14.2.tgz#c3ec604a0b54b9a9b87e9735dfc59e1a5da6a5fb"
+  integrity sha1-w+xgSgtUuam4fpc138WeGl2mpfs=
+
 "@nestjs/cli@^10.0.0":
   version "10.3.2"
   resolved "http://registry.m.jd.com/@nestjs/cli/download/@nestjs/cli-10.3.2.tgz#42d2764ead6633e278c55d42de871b4cc1db002b"
@@ -735,6 +740,11 @@
     path-to-regexp "3.2.0"
     tslib "2.6.2"
 
+"@nestjs/mapped-types@2.0.5":
+  version "2.0.5"
+  resolved "http://registry.m.jd.com/@nestjs/mapped-types/download/@nestjs/mapped-types-2.0.5.tgz#485d6b44e19779c98d04e52bd1d2bcc7001df0ea"
+  integrity sha1-SF1rROGXecmNBOUr0dK8xwAd8Oo=
+
 "@nestjs/platform-express@^10.0.0":
   version "10.3.5"
   resolved "http://registry.m.jd.com/@nestjs/platform-express/download/@nestjs/platform-express-10.3.5.tgz#bbaac4d63c0ab342f663da6618818bfcec09369e"
@@ -756,6 +766,18 @@
     comment-json "4.2.3"
     jsonc-parser "3.2.1"
     pluralize "8.0.0"
+
+"@nestjs/swagger@^7.3.0":
+  version "7.3.0"
+  resolved "http://registry.m.jd.com/@nestjs/swagger/download/@nestjs/swagger-7.3.0.tgz#0b5e397cc5a592422df9afb24c79af928fea5954"
+  integrity sha1-C145fMWlkkIt+a+yTHmvko/qWVQ=
+  dependencies:
+    "@microsoft/tsdoc" "^0.14.2"
+    "@nestjs/mapped-types" "2.0.5"
+    js-yaml "4.1.0"
+    lodash "4.17.21"
+    path-to-regexp "3.2.0"
+    swagger-ui-dist "5.11.2"
 
 "@nestjs/testing@^10.0.0":
   version "10.3.4"
@@ -1549,6 +1571,11 @@ base64-js@^1.3.1:
   resolved "http://registry.m.jd.com/base64-js/download/base64-js-1.5.1.tgz#1b1b440160a5bf7ad40b650f095963481903930a"
   integrity sha1-GxtEAWClv3rUC2UPCVljSBkDkwo=
 
+bcryptjs@^2.4.3:
+  version "2.4.3"
+  resolved "http://registry.m.jd.com/bcryptjs/download/bcryptjs-2.4.3.tgz#9ab5627b93e60621ff7cdac5da9733027df1d0cb"
+  integrity sha1-mrVie5PmBiH/fNrF2pczAn3x0Ms=
+
 binary-extensions@^2.0.0:
   version "2.3.0"
   resolved "http://registry.m.jd.com/binary-extensions/download/binary-extensions-2.3.0.tgz#f6e14a97858d327252200242d4ccfe522c445522"
@@ -1923,6 +1950,16 @@ convert-source-map@^2.0.0:
   resolved "http://registry.m.jd.com/convert-source-map/download/convert-source-map-2.0.0.tgz#4b560f649fc4e918dd0ab75cf4961e8bc882d82a"
   integrity sha1-S1YPZJ/E6RjdCrdc9JYei8iC2Co=
 
+cookie-session@^2.0.0:
+  version "2.0.0"
+  resolved "http://registry.m.jd.com/cookie-session/download/cookie-session-2.0.0.tgz#d07aa27822f43619e4342df1342268c849833089"
+  integrity sha1-0HqieCL0NhnkNC3xNCJoyEmDMIk=
+  dependencies:
+    cookies "0.8.0"
+    debug "3.2.7"
+    on-headers "~1.0.2"
+    safe-buffer "5.2.1"
+
 cookie-signature@1.0.6:
   version "1.0.6"
   resolved "http://registry.m.jd.com/cookie-signature/download/cookie-signature-1.0.6.tgz#e303a882b342cc3ee8ca513a79999734dab3ae2c"
@@ -1937,6 +1974,14 @@ cookiejar@^2.1.4:
   version "2.1.4"
   resolved "http://registry.m.jd.com/cookiejar/download/cookiejar-2.1.4.tgz#ee669c1fea2cf42dc31585469d193fef0d65771b"
   integrity sha1-7macH+os9C3DFYVGnRk/7w1ldxs=
+
+cookies@0.8.0:
+  version "0.8.0"
+  resolved "http://registry.m.jd.com/cookies/download/cookies-0.8.0.tgz#1293ce4b391740a8406e3c9870e828c4b54f3f90"
+  integrity sha1-EpPOSzkXQKhAbjyYcOgoxLVPP5A=
+  dependencies:
+    depd "~2.0.0"
+    keygrip "~1.1.0"
 
 core-util-is@^1.0.3, core-util-is@~1.0.0:
   version "1.0.3"
@@ -2000,6 +2045,13 @@ debug@2.6.9:
   dependencies:
     ms "2.0.0"
 
+debug@3.2.7:
+  version "3.2.7"
+  resolved "http://registry.m.jd.com/debug/download/debug-3.2.7.tgz#72580b7e9145fb39b6676f9c5e5fb100b934179a"
+  integrity sha1-clgLfpFF+zm2Z2+cXl+xALk0F5o=
+  dependencies:
+    ms "^2.1.1"
+
 debug@^4.1.0, debug@^4.1.1, debug@^4.3.1, debug@^4.3.2, debug@^4.3.4:
   version "4.3.4"
   resolved "http://registry.m.jd.com/debug/download/debug-4.3.4.tgz#1319f6579357f2338d3337d2cdd4914bb5dcc865"
@@ -2048,7 +2100,7 @@ denque@^2.1.0:
   resolved "http://registry.m.jd.com/denque/download/denque-2.1.0.tgz#e93e1a6569fb5e66f16a3c2a2964617d349d6ab1"
   integrity sha1-6T4aZWn7XmbxajwqKWRhfTSdarE=
 
-depd@2.0.0:
+depd@2.0.0, depd@~2.0.0:
   version "2.0.0"
   resolved "http://registry.m.jd.com/depd/download/depd-2.0.0.tgz#b696163cc757560d09cf22cc8fad1571b79e76df"
   integrity sha1-tpYWPMdXVg0JzyLMj60Vcbeedt8=
@@ -3468,6 +3520,13 @@ js-tokens@^4.0.0:
   resolved "http://registry.m.jd.com/js-tokens/download/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
   integrity sha1-GSA/tZmR35jjoocFDUZHzerzJJk=
 
+js-yaml@4.1.0, js-yaml@^4.1.0:
+  version "4.1.0"
+  resolved "http://registry.m.jd.com/js-yaml/download/js-yaml-4.1.0.tgz#c1fb65f8f5017901cdd2c951864ba18458a10602"
+  integrity sha1-wftl+PUBeQHN0slRhkuhhFihBgI=
+  dependencies:
+    argparse "^2.0.1"
+
 js-yaml@^3.13.1:
   version "3.14.1"
   resolved "http://registry.m.jd.com/js-yaml/download/js-yaml-3.14.1.tgz#dae812fdb3825fa306609a8717383c50c36a0537"
@@ -3475,13 +3534,6 @@ js-yaml@^3.13.1:
   dependencies:
     argparse "^1.0.7"
     esprima "^4.0.0"
-
-js-yaml@^4.1.0:
-  version "4.1.0"
-  resolved "http://registry.m.jd.com/js-yaml/download/js-yaml-4.1.0.tgz#c1fb65f8f5017901cdd2c951864ba18458a10602"
-  integrity sha1-wftl+PUBeQHN0slRhkuhhFihBgI=
-  dependencies:
-    argparse "^2.0.1"
 
 jsesc@^2.5.1:
   version "2.5.2"
@@ -3536,6 +3588,13 @@ jsonfile@^6.0.1:
     universalify "^2.0.0"
   optionalDependencies:
     graceful-fs "^4.1.6"
+
+keygrip@~1.1.0:
+  version "1.1.0"
+  resolved "http://registry.m.jd.com/keygrip/download/keygrip-1.1.0.tgz#871b1681d5e159c62a445b0c74b615e0917e7226"
+  integrity sha1-hxsWgdXhWcYqRFsMdLYV4JF+ciY=
+  dependencies:
+    tsscmp "1.0.6"
 
 keyv@^4.5.3:
   version "4.5.4"
@@ -3794,7 +3853,7 @@ ms@2.1.2:
   resolved "http://registry.m.jd.com/ms/download/ms-2.1.2.tgz#d09d1f357b443f493382a8eb3ccd183872ae6009"
   integrity sha1-0J0fNXtEP0kzgqjrPM0YOHKuYAk=
 
-ms@2.1.3:
+ms@2.1.3, ms@^2.1.1:
   version "2.1.3"
   resolved "http://registry.m.jd.com/ms/download/ms-2.1.3.tgz#574c8138ce1d2b5861f0b44579dbadd60c6615b2"
   integrity sha1-V0yBOM4dK1hh8LRFedut1gxmFbI=
@@ -3924,6 +3983,11 @@ on-finished@2.4.1:
   integrity sha1-WMjEQRblSEWtV/FKsQsDUzGErD8=
   dependencies:
     ee-first "1.1.1"
+
+on-headers@~1.0.2:
+  version "1.0.2"
+  resolved "http://registry.m.jd.com/on-headers/download/on-headers-1.0.2.tgz#772b0ae6aaa525c399e489adfad90c403eb3c28f"
+  integrity sha1-dysK5qqlJcOZ5Imt+tkMQD6zwo8=
 
 once@^1.3.0, once@^1.4.0:
   version "1.4.0"
@@ -4687,6 +4751,11 @@ supports-preserve-symlinks-flag@^1.0.0:
   resolved "http://registry.m.jd.com/supports-preserve-symlinks-flag/download/supports-preserve-symlinks-flag-1.0.0.tgz#6eda4bd344a3c94aea376d4cc31bc77311039e09"
   integrity sha1-btpL00SjyUrqN21MwxvHcxEDngk=
 
+swagger-ui-dist@5.11.2:
+  version "5.11.2"
+  resolved "http://registry.m.jd.com/swagger-ui-dist/download/swagger-ui-dist-5.11.2.tgz#b423e820928df703586ff58f80b09ffcf2434e08"
+  integrity sha1-tCPoIJKN9wNYb/WPgLCf/PJDTgg=
+
 symbol-observable@4.0.0:
   version "4.0.0"
   resolved "http://registry.m.jd.com/symbol-observable/download/symbol-observable-4.0.0.tgz#5b425f192279e87f2f9b937ac8540d1984b39205"
@@ -4869,6 +4938,11 @@ tslib@2.6.2, tslib@^2.1.0, tslib@^2.5.0, tslib@^2.6.2:
   version "2.6.2"
   resolved "http://registry.m.jd.com/tslib/download/tslib-2.6.2.tgz#703ac29425e7b37cd6fd456e92404d46d1f3e4ae"
   integrity sha1-cDrClCXns3zW/UVukkBNRtHz5K4=
+
+tsscmp@1.0.6:
+  version "1.0.6"
+  resolved "http://registry.m.jd.com/tsscmp/download/tsscmp-1.0.6.tgz#85b99583ac3589ec4bfef825b5000aa911d605eb"
+  integrity sha1-hbmVg6w1iexL/vgltQAKqRHWBes=
 
 type-check@^0.4.0, type-check@~0.4.0:
   version "0.4.0"

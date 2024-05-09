@@ -1,4 +1,6 @@
-import { Controller, Get } from "@nestjs/common";
+import { Controller, Get, Post, Body, HttpCode, HttpStatus } from "@nestjs/common";
+import { ApiResponse, ApiOperation } from "@nestjs/swagger";
+import { UserRegisterDto } from "./dto/userDTO";
 import { UserService } from "./user.service";
 import { User } from "./user.entity";
 import { EnvConfigService } from "../../shared/service/env-config.service";
@@ -13,5 +15,13 @@ export class UserController {
   @Get()
   async getHello(): Promise<User[]> {
     return await this.userService.findAll();
+  }
+
+  @ApiOperation({ summary: "注册用户" })
+  @ApiResponse({ status: 200, description: "创建用户", type: User })
+  @HttpCode(HttpStatus.OK)
+  @Post()
+  async register(@Body() userRegisterDto: UserRegisterDto): Promise<User> {
+    return this.userService.registerUser(userRegisterDto);
   }
 }
