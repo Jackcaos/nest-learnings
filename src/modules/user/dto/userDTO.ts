@@ -7,3 +7,9 @@ export class UserRegisterDto {
 
   description?: string;
 }
+
+export class UserLoginDto {
+  readonly account!: string;
+
+  readonly password!: string;
+}
