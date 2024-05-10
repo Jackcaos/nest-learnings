@@ -1,18 +1,19 @@
-import { Module, MiddlewareConsumer } from "@nestjs/common";
-import { APP_GUARD } from "@nestjs/core";
+import { Module } from "@nestjs/common";
+// import { APP_GUARD } from "@nestjs/core";
 import { ConfigModule, ConfigService } from "@nestjs/config";
 import { TypeOrmModule } from "@nestjs/typeorm";
-import * as cookieSession from "cookie-session";
 // 模块
 import { SharedModule } from "./shared/shared.module";
 import { UserModule } from "./modules/user/user.module";
+import { AuthModule } from "./modules/auth/auth.module";
 // 服务
 import { EnvConfigService } from "./shared/service/env-config.service";
 // 守卫
-import { AuthGuard } from "./guard/auth.guard";
+// import { AuthGuard } from "./guard/auth.guard";
 
 @Module({
   imports: [
+    AuthModule,
     UserModule,
     ConfigModule.forRoot({
       envFilePath: process.env.NODE_ENV === "development" ? ".env.development" : ".env.production",
@@ -25,30 +26,6 @@ import { AuthGuard } from "./guard/auth.guard";
     }),
   ],
   controllers: [],
-  providers: [
-    ConfigService,
-    {
-      provide: APP_GUARD,
-      useClass: AuthGuard,
-    },
-  ],
+  providers: [ConfigService],
 })
-export class AppModule {
-  configure(consumer: MiddlewareConsumer) {
-    consumer
-      .apply(
-        cookieSession({
-          name: "nest-session-id",
-          keys: ["test-secret"],
-          maxAge: 5 * 60 * 1000, // 过期时间, 单位毫秒。这里设置5分钟
-          cookie: {
-            // 过期时间, 单位毫秒。这里设置5分钟
-            maxAge: 5 * 60 * 1000,
-            // cookie是否签名
-            signed: true,
-          },
-        }),
-      )
-      .forRoutes("*");
-  }
-}
+export class AppModule {}

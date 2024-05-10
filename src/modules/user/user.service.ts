@@ -1,8 +1,9 @@
-import { Injectable } from "@nestjs/common";
+import { Injectable, BadRequestException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import * as bcrypt from "bcryptjs";
-import { Repository } from "typeorm";
-import { UserRegisterDto, UserLoginDto } from "./dto/userDTO";
+import { type FindOptionsWhere, Repository } from "typeorm";
+import { UserRegisterDto } from "../auth/dto/user-register.dto";
+import { UserLoginDto } from "../auth/dto/user-login.dto";
 import { User } from "./user.entity";
 
 @Injectable()
@@ -16,11 +17,15 @@ export class UserService {
     return this.userRepository.find();
   }
 
-  async registerUser(userRegisterDto: UserRegisterDto): Promise<User> {
+  findOne(findData: FindOptionsWhere<User>): Promise<User | null> {
+    return this.userRepository.findOneBy(findData);
+  }
+
+  async createUser(userRegisterDto: UserRegisterDto): Promise<User> {
     const { name, account } = userRegisterDto;
     const lists = await this.findUserByNameOrAccount({ name, account });
     if (lists.length > 0) {
-      throw new Error("用户名或账户已存在");
+      throw new BadRequestException("用户名或账户已存在");
     }
 
     userRegisterDto.password = await bcrypt.hash(userRegisterDto.password, 10);

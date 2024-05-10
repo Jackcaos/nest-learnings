@@ -2,6 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { type TypeOrmModuleOptions } from "@nestjs/typeorm";
 import { isNil } from "lodash";
+import { JWTConfig } from "../interface/env-config.interface";
 
 @Injectable()
 export class EnvConfigService {
@@ -54,6 +55,13 @@ export class EnvConfigService {
       synchronize: this.getBoolean("DB_SYNCHRONIZE"),
       logging: this.getBoolean("DB_LOGGING"),
       entities: [__dirname + "/../../modules/**/*.entity{.ts,.js}"],
+    };
+  }
+
+  get jwtConfig(): JWTConfig {
+    return {
+      secret: this.getString("JWT_SECRET"),
+      expire: this.getString("JWT_EXPIRE"),
     };
   }
 
