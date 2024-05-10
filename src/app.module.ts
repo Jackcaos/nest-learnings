@@ -3,13 +3,12 @@ import { APP_GUARD } from "@nestjs/core";
 import { ConfigModule, ConfigService } from "@nestjs/config";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import * as cookieSession from "cookie-session";
-
 // 模块
 import { SharedModule } from "./shared/shared.module";
 import { UserModule } from "./modules/user/user.module";
-
+// 服务
 import { EnvConfigService } from "./shared/service/env-config.service";
-
+// 守卫
 import { AuthGuard } from "./guard/auth.guard";
 
 @Module({
@@ -46,7 +45,7 @@ export class AppModule {
             // 过期时间, 单位毫秒。这里设置5分钟
             maxAge: 5 * 60 * 1000,
             // cookie是否签名
-            signed: false,
+            signed: true,
           },
         }),
       )
