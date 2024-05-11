@@ -6,6 +6,7 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 import { SharedModule } from "./shared/shared.module";
 import { UserModule } from "./modules/user/user.module";
 import { AuthModule } from "./modules/auth/auth.module";
+import { RoleModule } from "./modules/permission/permission.module";
 // 服务
 import { EnvConfigService } from "./shared/service/env-config.service";
 // 守卫
@@ -15,6 +16,7 @@ import { EnvConfigService } from "./shared/service/env-config.service";
   imports: [
     AuthModule,
     UserModule,
+    RoleModule,
     ConfigModule.forRoot({
       envFilePath: process.env.NODE_ENV === "development" ? ".env.development" : ".env.production",
       isGlobal: true,
