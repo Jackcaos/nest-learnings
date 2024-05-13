@@ -19,8 +19,8 @@ export class Permission {
   @PrimaryGeneratedColumn({ comment: "用户权限表主键id" })
   id: number;
 
-  @Column({ comment: "用户id" })
-  user_id: number;
+  @Column({ name: "user_id", comment: "用户id" })
+  userId: number;
 
   @Column({ comment: "用户权限" })
   permission: number;
@@ -38,7 +38,7 @@ export class Permission {
   updateUserId: number;
 
   @Column({
-    name: "isdel",
+    name: "is_del",
     type: "tinyint",
     comment: "是否删除",
   })

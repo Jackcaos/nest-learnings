@@ -4026,6 +4026,11 @@ neo-async@^2.6.2:
   resolved "http://registry.m.jd.com/neo-async/download/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha1-tKr7k+OustgXTKU88WOrfXMIMF8=
 
+nestjs-cls@^4.3.0:
+  version "4.3.0"
+  resolved "http://registry.m.jd.com/nestjs-cls/download/nestjs-cls-4.3.0.tgz#1d8e8f5db8557392c6c8ff1eafd590e5d11d7815"
+  integrity sha1-HY6PXbhVc5LGyP8er9WQ5dEdeBU=
+
 node-abort-controller@^3.0.1:
   version "3.1.1"
   resolved "http://registry.m.jd.com/node-abort-controller/download/node-abort-controller-3.1.1.tgz#a94377e964a9a37ac3976d848cb5c765833b8548"

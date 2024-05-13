@@ -32,6 +32,7 @@
     "cookie-session": "^2.0.0",
     "lodash": "^4.17.21",
     "mysql2": "^3.9.4",
+    "nestjs-cls": "^4.3.0",
     "passport": "^0.7.0",
     "passport-jwt": "^4.0.1",
     "reflect-metadata": "^0.2.0",

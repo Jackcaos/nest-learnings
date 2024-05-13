@@ -33,4 +33,11 @@ export class JwtStrategy extends PassportStrategy(Strategy, "jwt") {
 
     return user;
   }
+
+  async authenticate(req: any, options?: any) {
+    super.authenticate(req, options);
+    // 如果验证成功，将用户信息存储到请求上下文中
+    // eslint-disable-next-line no-self-assign
+    req.user = req.user;
+  }
 }
