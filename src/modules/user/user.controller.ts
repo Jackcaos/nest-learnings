@@ -4,7 +4,6 @@ import { UserService } from "./user.service";
 import { User } from "./user.entity";
 import { EnvConfigService } from "../../shared/service/env-config.service";
 import { AuthUserInterceptor } from "../../interceptors/auth-user-interceptors";
-import { ContextProvider } from "../../providers/context.provider";
 
 @Controller("user")
 export class UserController {
@@ -17,7 +16,11 @@ export class UserController {
   @UseInterceptors(AuthUserInterceptor)
   @Get()
   async getHello(): Promise<User[]> {
-    console.log(ContextProvider.getUser());
     return await this.userService.findAll();
+  }
+
+  @Get("hello")
+  async hello(name: string, age: number) {
+    return `hello ${age}, you are ${age} years old`;
   }
 }

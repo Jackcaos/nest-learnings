@@ -1,73 +1,43 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# 背景
+目前有很多的部门前端团队都会有自己内部的一些平台系统，大部分时候这些平台往往是没有后台资源倾斜，这使得很多前端开发// 需要前端研发来开发，而大部分前端同学都是用Node相关的服务端框架来进行开发工作，而在服务端开发上存在一些痛点。
+    // - 服务端开发经验少，无论是技术选型、开发规范、以及维护和迭代，都没有形成一套自己团队的体系，最终导致开发出来的项目难以维护。
+    // - 例如服务鉴权（SSO认证或者JWT鉴权）、日志服务、项目部署和运维监控等通用型功能和能力没有相关的参考，这些重复性开发工作还是可以被沉淀下来的。
+    // - 数据库、Redis、MQ等内部相关服务的接入文档以Java、Go、Python等语言为主，Node相关方式缺失，导致进一步增加开发难度。
+    
+    // 为什么选用Nest作为服务端的模版框架呢？
+    // 首先koa、express框架适合作为底层框架，但是业务框架来说没有项目架构可言，各种东西都需要自己集成，针对一个大型服务来说，一些水平层次不齐的团队，可能到后期服务就很难维护了。
+    // egg.js是阿里开发并维护的，但是最大的硬伤就是对TS的支持没有那么友好，并且现在社区其实也没那么活跃了。
+    // Nest的话对TS的支持度很好，并且拥有完备的服务端项目的架构规范，例如依赖注入能力，HTTP框架和路由，基于AOP编程范式的设计，以及数据库的支持和日志的规范处理等等，基本就可以做到开箱即用。
+    // 
+    // 所以我们最终选用Nest作为服务端的框架，在其基础上进行一些通用型能力的集成以及实践。
+    // 
+    // 走进Nest
+    // 其实我个人觉得Nest的框架，单单看文档上手起来还是很困难的，比如AOP的编程范式、、。
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+    // Nest的AOP编程规范
+    // 可能很多人听过面向对象编程，但是可能对于前端来说，很少人听过AOP（面向切面编程）吧，我当时看Nest的文档的时候，脑子也是处于真空的状态，到底什么是Aspect？
+    // 看看来自GPT的答案：
+    // 面向切面编程（AOP，Aspect-Oriented Programming）是一种编程范式，它的主要目的是在程序中解耦横切关注点（Cross-Cutting Concerns）。横切关注点是那些存在于应用程序多个模块中、且通常会影响整个应用程序的功能的代码，
+    // 比如日志记录、事务管理、安全控制等。 AOP 将这些横切关注点从应用程序的核心业务逻辑中抽离出来，通过切面（Aspect）的方式对其进行模块化，从而提高了代码的可维护性、可复用性和可测试性。
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+    // 相信听完还是很抽象，我们来简单理解一下：
+    // 如果是express框架，正常的请求可能是的顺序是`middleware -> controller -> service -> middleware`，其实middleware这种洋葱模型实际上也是其实也算这个请求上的一个切点，这个切点可以在
+    // 不影响业务的核心逻辑的情况下，将一些通用逻辑，例如请求日志逻辑、鉴权逻辑通过中间件的方式抽离出来。
+    // 而Nest中，整个请求不仅仅包括Middleware这种实现AOP的方式，还包括Guard、Pipe、Interceptor、ExceptionFilter这几类方式。相比于Middleware完成完工作后，直接通过next将所有权交给下一个中间件，
+    // 其实当前中间件是不知道后续的处理流程是什么的。但是Guard、Pipe、Interceptor、ExceptionFilter这几类实现方式，可以访问ExecutionContext实例，因此确切地知道接下来将执行什么。
+    // 可以让您在请求/响应周期中的确切位置插入处理逻辑。
 
-## Description
+    // - Guard
+    // 作用的范围：作用于Middleware之后，在Controller的方法被调用前
+    // Guard是守卫的意思，校验用户是否满足对应路由的访问权限，无权限则返回false，则直接返回403 Forbidden。
+    // - Pipe
+    // 作用范围：作用于Middleware之后，在具体的Controller方法触发之前执行
+    // 管道的主要作用包括：它允许你对传入的数据进行验证、转换或过滤，然后再将其传递给下一个处理程序。常见能力比如数据转换和验证、错误处理、流程控制。
+    // - Interceptor
+    // 作用范围：作用于Middleware之后，在具体的Controller方法触发之前执行，也可以在Controller方法触发之后执行。
+    // 拦截器的主要作用包括：在具体路由函数执行之前/之后绑定额外的逻辑，转换从函数返回的结果，转换从函数抛出的异常等。
+    // - ExceptionFilter
+    // 作用范围：在具体的Controller方法触发之后执行。
+    // 异常过滤器的主要作用：Nest框架内置了一个异常处理层，负责处理应用程序中的所有未处理异常。当一个异常没有被应用程序代码处理时，它会被这个异常处理层捕获，然后自动发送一个适当的用户友好响应。
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
-## Installation
-
-```bash
-$ pnpm install
-```
-
-## Running the app
-
-```bash
-# development
-$ pnpm run start
-
-# watch mode
-$ pnpm run start:dev
-
-# production mode
-$ pnpm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ pnpm run test
-
-# e2e tests
-$ pnpm run test:e2e
-
-# test coverage
-$ pnpm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+    // 那么这些AOP在整个请求的生命周期是怎么样的呢？
