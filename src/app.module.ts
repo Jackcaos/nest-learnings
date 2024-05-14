@@ -1,15 +1,19 @@
 import { Module, MiddlewareConsumer } from "@nestjs/common";
-import { APP_GUARD } from "@nestjs/core";
+import { APP_GUARD, APP_FILTER } from "@nestjs/core";
 import { ConfigModule, ConfigService } from "@nestjs/config";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import * as cookieSession from "cookie-session";
 // 模块
 import { SharedModule } from "./shared/shared.module";
 import { UserModule } from "./modules/user/user.module";
+// 中间件
+import { LoggerMiddleware } from "./middlewares/logger.middleware";
 // 服务
 import { EnvConfigService } from "./shared/service/env-config.service";
 // 守卫
 import { AuthGuard } from "./guard/auth.guard";
+// 异常过滤器
+import { BadRequestExceptionFilter } from "./exception/BadRequestExceptionFilter";
 
 @Module({
   imports: [
@@ -31,6 +35,10 @@ import { AuthGuard } from "./guard/auth.guard";
       provide: APP_GUARD,
       useClass: AuthGuard,
     },
+    {
+      provide: APP_FILTER,
+      useClass: BadRequestExceptionFilter,
+    },
   ],
 })
 export class AppModule {
@@ -48,6 +56,7 @@ export class AppModule {
             signed: true,
           },
         }),
+        LoggerMiddleware,
       )
       .forRoutes("*");
   }
