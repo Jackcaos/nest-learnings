@@ -1,4 +1,4 @@
-import { forwardRef, Module } from "@nestjs/common";
+import { Module } from "@nestjs/common";
 import { JwtModule } from "@nestjs/jwt";
 
 import { UserModule } from "../user/user.module";
@@ -11,7 +11,7 @@ import { EnvConfigService } from "../../shared/service/env-config.service";
 
 @Module({
   imports: [
-    forwardRef(() => UserModule),
+    UserModule,
     PassportModule.register({ defaultStrategy: "jwt" }),
     JwtModule.registerAsync({
       useFactory: (envConfigService: EnvConfigService) => ({
